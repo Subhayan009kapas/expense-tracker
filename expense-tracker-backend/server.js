@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 
 // Allow requests from your frontend
-const allowedOrigins = ["http://localhost:5173", "http://localhost:5174", "http://localhost:5175"];
+const allowedOrigins = ["http://localhost:5173", "http://localhost:5174", "http://localhost:5175" , "https://expense-tracker-rho-lilac-26.vercel.app/"];
 
 app.use(
   cors({
