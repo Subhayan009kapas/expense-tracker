@@ -10,7 +10,12 @@ const app = express();
 app.use(express.json());
 
 // Allow requests from your frontend
-const allowedOrigins = ["http://localhost:5173", "http://localhost:5174", "http://localhost:5175" , "https://expense-tracker-rho-lilac-26.vercel.app/"];
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "http://localhost:5175",
+  "https://expense-tracker-rho-lilac-26.vercel.app" // ✅ removed trailing slash
+];
 
 app.use(
   cors({
@@ -25,8 +30,7 @@ app.use(
   })
 );
 
-
-// Routes
+// ✅ Routes (all prefixed with /api)
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/transactions", require("./routes/transactionRoutes"));
 app.use("/api/budgets", require("./routes/budgetRoutes"));
