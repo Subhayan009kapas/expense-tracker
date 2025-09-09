@@ -1,0 +1,314 @@
+/* src/components/Loader/Loader.css */
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.loader-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="10" cy="60" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="90" cy="40" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  opacity: 0.3;
+  animation: grainMove 20s linear infinite;
+}
+
+@keyframes grainMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-100px, -100px); }
+}
+
+.loader-container {
+  text-align: center;
+  color: white;
+  position: relative;
+  z-index: 1;
+}
+
+/* Animated Logo */
+.loader-logo {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.money-icon {
+  position: relative;
+  display: inline-block;
+  animation: logoFloat 3s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+.dollar-sign {
+  font-size: 4rem;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  animation: dollarPulse 2s ease-in-out infinite;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes dollarPulse {
+  0%, 100% { 
+    transform: scale(1);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  }
+  50% { 
+    transform: scale(1.1);
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+  }
+}
+
+.money-coins {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+}
+
+.coin {
+  position: absolute;
+  font-size: 1.5rem;
+  animation: coinOrbit 4s linear infinite;
+}
+
+.coin-1 {
+  animation-delay: 0s;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.coin-2 {
+  animation-delay: -1.33s;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.coin-3 {
+  animation-delay: -2.66s;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@keyframes coinOrbit {
+  0% {
+    transform: translateX(-50%) rotate(0deg) translateX(60px) rotate(0deg);
+  }
+  100% {
+    transform: translateX(-50%) rotate(360deg) translateX(60px) rotate(-360deg);
+  }
+}
+
+.coin-2 {
+  animation: coinOrbit2 4s linear infinite;
+}
+
+@keyframes coinOrbit2 {
+  0% {
+    transform: translateY(-50%) rotate(0deg) translateY(60px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-50%) rotate(360deg) translateY(60px) rotate(-360deg);
+  }
+}
+
+.coin-3 {
+  animation: coinOrbit3 4s linear infinite;
+}
+
+@keyframes coinOrbit3 {
+  0% {
+    transform: translateX(-50%) rotate(0deg) translateX(-60px) rotate(0deg);
+  }
+  100% {
+    transform: translateX(-50%) rotate(360deg) translateX(-60px) rotate(-360deg);
+  }
+}
+
+/* Text Animation */
+.loader-text {
+  margin-bottom: 2rem;
+}
+
+.loader-text h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  background: linear-gradient(45deg, #fff, #f0f0f0, #fff);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: textShine 3s ease-in-out infinite;
+}
+
+@keyframes textShine {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.loader-text p {
+  font-size: 1.1rem;
+  margin: 0;
+  opacity: 0.9;
+  animation: textFade 2s ease-in-out infinite;
+}
+
+@keyframes textFade {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+/* Progress Bar */
+.loader-progress {
+  width: 300px;
+  margin: 0 auto 1.5rem;
+  position: relative;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #fff, #f0f0f0, #fff);
+  background-size: 200% 100%;
+  border-radius: 2px;
+  animation: progressMove 2s ease-in-out infinite;
+  position: relative;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+  animation: progressShine 1.5s ease-in-out infinite;
+}
+
+@keyframes progressMove {
+  0% { 
+    width: 0%;
+    background-position: 0% 50%;
+  }
+  50% { 
+    width: 70%;
+    background-position: 100% 50%;
+  }
+  100% { 
+    width: 100%;
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes progressShine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Loading Dots */
+.loading-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  animation: dotBounce 1.4s ease-in-out infinite both;
+}
+
+.dot:nth-child(1) { animation-delay: -0.32s; }
+.dot:nth-child(2) { animation-delay: -0.16s; }
+.dot:nth-child(3) { animation-delay: 0s; }
+
+@keyframes dotBounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .loader-text h2 {
+    font-size: 2rem;
+  }
+  
+  .dollar-sign {
+    font-size: 3rem;
+  }
+  
+  .money-coins {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .coin {
+    font-size: 1.2rem;
+  }
+  
+  .loader-progress {
+    width: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .loader-text h2 {
+    font-size: 1.8rem;
+  }
+  
+  .dollar-sign {
+    font-size: 2.5rem;
+  }
+  
+  .money-coins {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .coin {
+    font-size: 1rem;
+  }
+  
+  .loader-progress {
+    width: 200px;
+  }
+}
