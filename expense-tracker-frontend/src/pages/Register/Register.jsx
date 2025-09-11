@@ -58,6 +58,7 @@ const Register = () => {
       {loading && <AuthLoader message="Creating your account..." />}
       <div className="register-form">
         <h2>Create Your Account</h2>
+        <p className="register-subtitle">Join and take control of your expenses.</p>
         {error && <div className="error-message">{error}</div>}
         <form onSubmit={handleSubmit}>
           <div className="form-group">

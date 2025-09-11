@@ -53,6 +53,7 @@ const Login = () => {
       {loading && <AuthLoader message="Signing you in..." />}
       <div className="login-form">
         <h2>Login to Your Account</h2>
+        <p className="login-subtitle">Welcome back! Please enter your details.</p>
         {error && <div className="error-message">{error}</div>}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
