@@ -110,22 +110,97 @@ const TransactionList = ({ filters, refresh }) => {
     }
   };
 
-  const getCategoryIcon = (category) => {
-    const icons = {
-      'Food': '🍔',
-      'Travel': '✈️',
-      'Rent': '🏠',
-      'Shopping': '🛍️',
-      'Entertainment': '🎬',
-      'Utilities': '⚡',
-      'Healthcare': '🏥',
-      'Salary': '💰',
-      'Freelance': '💼',
-      'Investment': '📈',
-      'Gift': '🎁',
-      'Other': '📝'
-    };
-    return icons[category] || '📝';
+  // Inline SVG icons for categories
+  const CategoryIcon = ({ category }) => {
+    switch (category) {
+      case 'Food':
+        return (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 3V12" stroke="#64748b" strokeWidth="1.6" strokeLinecap="round"/>
+            <path d="M11 3V12" stroke="#64748b" strokeWidth="1.6" strokeLinecap="round"/>
+            <path d="M7 12C7 15 9 17 12 17C15 17 17 15 17 12V3" stroke="#64748b" strokeWidth="1.6" strokeLinecap="round"/>
+          </svg>
+        );
+      case 'Travel':
+        return (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 16L3 8L10 20L12 13L21 16Z" fill="#64748b"/>
+          </svg>
+        );
+      case 'Rent':
+        return (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 10L12 3L21 10V21H3V10Z" stroke="#64748b" strokeWidth="1.6"/>
+            <path d="M9 21V14H15V21" stroke="#64748b" strokeWidth="1.6"/>
+          </svg>
+        );
+      case 'Shopping':
+        return (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 7H18L17 20H7L6 7Z" stroke="#64748b" strokeWidth="1.6"/>
+            <path d="M9 7C9 5.343 10.343 4 12 4C13.657 4 15 5.343 15 7" stroke="#64748b" strokeWidth="1.6"/>
+          </svg>
+        );
+      case 'Entertainment':
+        return (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="6" width="16" height="10" rx="2" stroke="#64748b" strokeWidth="1.6"/>
+            <path d="M4 10L12 13L20 10" stroke="#64748b" strokeWidth="1.6"/>
+          </svg>
+        );
+      case 'Utilities':
+        return (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L7 12H12L9 22L17 9H12L15 2H12Z" fill="#64748b"/>
+          </svg>
+        );
+      case 'Healthcare':
+        return (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="7" width="16" height="10" rx="2" stroke="#64748b" strokeWidth="1.6"/>
+            <path d="M12 9V15M9 12H15" stroke="#64748b" strokeWidth="1.6"/>
+          </svg>
+        );
+      case 'Salary':
+        return (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="6" width="18" height="12" rx="2" stroke="#64748b" strokeWidth="1.6"/>
+            <circle cx="12" cy="12" r="2.5" fill="#64748b"/>
+          </svg>
+        );
+      case 'Freelance':
+        return (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="5" width="16" height="14" rx="2" stroke="#64748b" strokeWidth="1.6"/>
+            <path d="M4 9H20" stroke="#64748b" strokeWidth="1.6"/>
+          </svg>
+        );
+      case 'Investment':
+        return (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 16L9 11L13 14L20 7" stroke="#64748b" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+            <circle cx="20" cy="7" r="1.6" fill="#64748b"/>
+            <circle cx="13" cy="14" r="1.6" fill="#64748b"/>
+            <circle cx="9" cy="11" r="1.6" fill="#64748b"/>
+            <circle cx="4" cy="16" r="1.6" fill="#64748b"/>
+          </svg>
+        );
+      case 'Gift':
+        return (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="8" width="18" height="12" rx="2" stroke="#64748b" strokeWidth="1.6"/>
+            <path d="M12 4C10 4 9 6 9 6C9 6 10 7 12 7C14 7 15 6 15 6C15 6 14 4 12 4Z" stroke="#64748b" strokeWidth="1.6"/>
+            <path d="M12 8V20" stroke="#64748b" strokeWidth="1.6"/>
+          </svg>
+        );
+      default:
+        return (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="5" width="16" height="14" rx="2" stroke="#64748b" strokeWidth="1.6"/>
+            <path d="M8 9H16M8 13H16" stroke="#64748b" strokeWidth="1.6"/>
+          </svg>
+        );
+    }
   };
 
   const getWalletIcon = (wallet) => {
@@ -152,7 +227,12 @@ const TransactionList = ({ filters, refresh }) => {
   if (error) {
     return (
       <div className="transaction-list-error">
-        <div className="error-icon">❌</div>
+        <div className="error-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" fill="#fee2e2"/>
+            <path d="M8 8L16 16M16 8L8 16" stroke="#b91c1c" strokeWidth="2" strokeLinecap="round"/>
+          </svg>
+        </div>
         <p>{error}</p>
         <button onClick={fetchTransactions} className="retry-button">
           Try Again
@@ -200,7 +280,12 @@ const TransactionList = ({ filters, refresh }) => {
 
       {sortedTransactions.length === 0 ? (
         <div className="no-transactions">
-          <div className="no-transactions-icon">📝</div>
+          <div className="no-transactions-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="4" y="5" width="16" height="14" rx="2" fill="#e2e8f0"/>
+              <path d="M8 9H16M8 13H13" stroke="#94a3b8" strokeWidth="1.6"/>
+            </svg>
+          </div>
           <h4>No transactions found</h4>
           <p>Start by adding your first transaction above.</p>
         </div>
@@ -210,7 +295,7 @@ const TransactionList = ({ filters, refresh }) => {
             <div key={transaction._id} className="transaction-item">
               <div className="transaction-main">
                 <div className="transaction-icon">
-                  {getCategoryIcon(transaction.category)}
+                  <CategoryIcon category={transaction.category} />
                 </div>
                 <div className="transaction-details">
                   <div className="transaction-header">
@@ -228,7 +313,12 @@ const TransactionList = ({ filters, refresh }) => {
                         {formatDate(transaction.date)}
                       </span>
                       <span className="transaction-wallet">
-                        {getWalletIcon(transaction.wallet)} {transaction.wallet}
+                        {/* Simple wallet card icon */}
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginRight: 6 }}>
+                          <rect x="3" y="7" width="18" height="12" rx="2" stroke="#94a3b8" strokeWidth="1.6"/>
+                          <circle cx="17" cy="13" r="1.5" fill="#94a3b8"/>
+                        </svg>
+                        {transaction.wallet}
                       </span>
                     </div>
                   </div>
