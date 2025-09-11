@@ -1,8 +1,22 @@
 // src/services/api.js
 import axios from 'axios';
 
+// Dynamic API configuration based on environment
+const getBaseURL = () => {
+  // For production, use the actual backend URL
+  if (import.meta.env.PROD) {
+    return 'https://expense-tracker-n58n.onrender.com/api';
+  }
+  // For development, use localhost
+  return 'http://localhost:5000/api';
+};
+
 const API = axios.create({ 
-  baseURL: 'https://expense-tracker-n58n.onrender.com/api' // ✅ added /api
+  baseURL: getBaseURL(),
+  timeout: 10000,
+  headers: {
+    'Content-Type': 'application/json',
+  }
 });
 
 // Add token to requests

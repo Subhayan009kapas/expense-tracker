@@ -9,24 +9,34 @@ connectDB();
 const app = express();
 app.use(express.json());
 
-// Allow requests from your frontend
+// CORS configuration for different environments
 const allowedOrigins = [
-  "http://localhost:5173",
-  "http://localhost:5174",
-  "http://localhost:5175",
-  "https://expense-tracker-rho-lilac-26.vercel.app" // ✅ removed trailing slash
-];
+  "http://localhost:5173", // Vite dev server
+  "http://localhost:5174", // Alternative Vite port
+  "http://localhost:3000", // Create React App dev server
+  "http://localhost:5175", // Additional dev port
+  "https://expense-tracker-rho-lilac-26.vercel.app", // Your Vercel frontend
+  process.env.FRONTEND_URL, // Environment variable for frontend URL
+].filter(Boolean); // Remove any undefined values
 
 app.use(
   cors({
     origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
+      // Allow requests with no origin (mobile apps, Postman, etc.)
+      if (!origin) return callback(null, true);
+      
+      if (allowedOrigins.includes(origin)) {
+        console.log('✅ CORS allowed for origin:', origin);
         callback(null, true);
       } else {
+        console.log('❌ CORS blocked origin:', origin);
+        console.log('Allowed origins:', allowedOrigins);
         callback(new Error("Not allowed by CORS"));
       }
     },
     credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
   })
 );
 
