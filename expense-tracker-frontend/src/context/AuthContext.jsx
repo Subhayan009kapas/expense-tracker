@@ -131,20 +131,16 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await apiRegister(userData);
       
-      if (response.data && response.data.token && response.data.user) {
-        const { token, user } = response.data;
-        
-        localStorage.setItem('token', token);
-        localStorage.setItem('user', JSON.stringify(user));
-        setCurrentUser(user);
-        
+      // Backend returns: { _id, name, email, token }
+      if (response && (response.status === 201 || response.status === 200) && response.data) {
+        // Do NOT auto-login after registration. Redirect user to login page instead.
         return { success: true };
-      } else {
-        return { 
-          success: false, 
-          message: 'Invalid response from server' 
-        };
       }
+      
+      return { 
+        success: false, 
+        message: 'Invalid response from server' 
+      };
     } catch (error) {
       console.error('Registration error:', error);
       return { 

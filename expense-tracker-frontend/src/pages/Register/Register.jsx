@@ -42,7 +42,8 @@ const Register = () => {
       });
       
       if (result.success) {
-        navigate('/dashboard');
+        // Redirect to login page after successful registration
+        navigate('/login');
       } else {
         setError(result.message);
       }
