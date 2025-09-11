@@ -229,7 +229,7 @@ const Dashboard = () => {
       <div className="metrics-grid">
         <div className="metric-card income">
           <div className="metric-header">
-            <div className="metric-icon">💰</div>
+            <div className="metric-icon"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-device-imac-dollar"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M13 17h-9a1 1 0 0 1 -1 -1v-12a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v6.5" /><path d="M3 13h11" /><path d="M8 21h5" /><path d="M10 17l-.5 4" /><path d="M21 15h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5" /><path d="M19 21v1m0 -8v1" /></svg></div>
             <div className="metric-trend positive">↗</div>
           </div>
           <div className="metric-content">
@@ -241,7 +241,7 @@ const Dashboard = () => {
 
         <div className="metric-card expense">
           <div className="metric-header">
-            <div className="metric-icon">💸</div>
+            <div className="metric-icon"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-device-mobile-dollar"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M13 21h-5a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v5" /><path d="M11 4h2" /><path d="M12 17v.01" /><path d="M21 15h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5" /><path d="M19 21v1m0 -8v1" /></svg></div>
             <div className="metric-trend negative">↘</div>
           </div>
           <div className="metric-content">
@@ -253,7 +253,7 @@ const Dashboard = () => {
 
         <div className="metric-card balance">
           <div className="metric-header">
-            <div className="metric-icon">⚖️</div>
+            <div className="metric-icon"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-scale"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 20l10 0" /><path d="M6 6l6 -1l6 1" /><path d="M12 3l0 17" /><path d="M9 12l-3 -6l-3 6a3 3 0 0 0 6 0" /><path d="M21 12l-3 -6l-3 6a3 3 0 0 0 6 0" /></svg></div>
             <div className={`metric-trend ${stats.netBalance >= 0 ? 'positive' : 'negative'}`}>
               {stats.netBalance >= 0 ? '↗' : '↘'}
             </div>
@@ -271,7 +271,7 @@ const Dashboard = () => {
 
         <div className="metric-card transactions">
           <div className="metric-header">
-            <div className="metric-icon">📊</div>
+            <div className="metric-icon"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chart-candle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 16v-5a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v5" /><path d="M7 16v-11a1 1 0 0 1 1 -1h10a1 1 0 0 1 1 1v11" /><path d="M12 13v-11a1 1 0 0 0 -1 -1h-1a1 1 0 0 0 -1 1v11" /><path d="M17 16v-11a1 1 0 0 0 -1 -1h-1a1 1 0 0 0 -1 1v11" /><path d="M7 16v-11a1 1 0 0 1 1 -1h1a1 1 0 0 1 1 1v11" /><path d="M11 16v-11a1 1 0 0 1 1 -1h1a1 1 0 0 1 1 1v11" /></svg></div>
             <div className="metric-trend neutral">📈</div>
           </div>
           <div className="metric-content">
